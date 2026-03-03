@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery • The Alley Booth Studio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">ABS</span>
+        <span class="brand__text">The Alley Booth Studio</span>
+      </a>
+      <nav class="nav">
+        <a class="btn btn--sm btn--ghost" href="index.html#book">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>Gallery</h1>
+        <p class="muted">Filter by category. Replace placeholders with your real photos.</p>
+      </div>
+
+      <div class="filters" role="tablist" aria-label="Gallery filters">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="weddings">Weddings</button>
+        <button class="chip" data-filter="birthdays">Birthdays</button>
+        <button class="chip" data-filter="corporate">Corporate</button>
+        <button class="chip" data-filter="walkins">Walk-ins</button>
+      </div>
+
+      <div class="grid" id="galleryGrid">
+        <button class="thumb" data-cat="weddings" data-full="assets/img/placeholder-1.jpg" aria-label="Open photo">
+          <img src="assets/img/placeholder-1.jpg" alt="" />
+        </button>
+        <button class="thumb" data-cat="birthdays" data-full="assets/img/placeholder-2.jpg" aria-label="Open photo">
+          <img src="assets/img/placeholder-2.jpg" alt="" />
+        </button>
+        <button class="thumb" data-cat="corporate" data-full="assets/img/placeholder-3.jpg" aria-label="Open photo">
+          <img src="assets/img/placeholder-3.jpg" alt="" />
+        </button>
+        <button class="thumb" data-cat="walkins" data-full="assets/img/placeholder-4.jpg" aria-label="Open photo">
+          <img src="assets/img/placeholder-4.jpg" alt="" />
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+    <img id="lightboxImg" alt="Expanded photo" />
+  </div>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>
