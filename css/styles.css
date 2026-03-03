@@ -377,6 +377,7 @@ input, select, textarea{
   padding: 20px;
   z-index: 999;
 }
+.lightbox[hidden]{ display:none; }
 .lightbox img{
   max-width:min(980px, 100%);
   max-height: 80vh;
