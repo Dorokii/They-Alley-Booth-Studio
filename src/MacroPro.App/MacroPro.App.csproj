@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MacroPro.Core\MacroPro.Core.csproj" />
+    <ProjectReference Include="..\MacroPro.Input.Windows\MacroPro.Input.Windows.csproj" />
+    <ProjectReference Include="..\MacroPro.Profiles\MacroPro.Profiles.csproj" />
+  </ItemGroup>
+</Project>

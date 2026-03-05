@@ -1,2 +1,8 @@
 *.code-workspace
 _tmp_4rtools_review/
+_research_ro_pixel_bot/
+_research_autofish/
+_research_openkore/
+.vs/
+bin/
+obj/
