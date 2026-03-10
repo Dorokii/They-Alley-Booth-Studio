@@ -43,6 +43,10 @@ public sealed class MainForm : Form
     private readonly ComboBox _refreshKey = new();
     private readonly NumericUpDown _refreshIntervalSeconds = new();
 
+    private readonly CheckBox _chainEnabled = new();
+    private readonly NumericUpDown _chainCycleDelay = new();
+    private readonly TextBox _chainStepsText = new();
+
     private readonly CheckBox _hunterEnabled = new();
     private readonly ComboBox _hunterSkillKey = new();
     private readonly ComboBox _hunterTargetKey = new();
@@ -58,6 +62,7 @@ public sealed class MainForm : Form
         Text = "MacroPro - Poring World";
         Width = 980;
         Height = 900;
+        AutoScroll = true;
         StartPosition = FormStartPosition.CenterScreen;
         KeyPreview = true;
 
@@ -257,6 +262,50 @@ public sealed class MainForm : Form
         groupRefresh.Controls.Add(_refreshIntervalSeconds);
 
         row += 160;
+
+        var groupChain = new GroupBox
+        {
+            Text = "Macro Chain",
+            Left = 16,
+            Top = row,
+            Width = 914,
+            Height = 180
+        };
+        Controls.Add(groupChain);
+
+        _chainEnabled.Text = "Enabled";
+        _chainEnabled.Left = 14;
+        _chainEnabled.Top = 28;
+        _chainEnabled.Width = 100;
+        groupChain.Controls.Add(_chainEnabled);
+
+        var chainCycleLabel = new Label { Text = "Cycle Delay ms", Left = 136, Top = 30, Width = 90 };
+        groupChain.Controls.Add(chainCycleLabel);
+        _chainCycleDelay.Left = 232;
+        _chainCycleDelay.Top = 26;
+        _chainCycleDelay.Width = 80;
+        _chainCycleDelay.Minimum = 80;
+        _chainCycleDelay.Maximum = 5000;
+        groupChain.Controls.Add(_chainCycleDelay);
+
+        var chainStepsLabel = new Label
+        {
+            Text = "Steps (one per line): KEY:F1:120 | CLICK:80 | WAIT:250",
+            Left = 14,
+            Top = 64,
+            Width = 520
+        };
+        groupChain.Controls.Add(chainStepsLabel);
+
+        _chainStepsText.Left = 14;
+        _chainStepsText.Top = 86;
+        _chainStepsText.Width = 886;
+        _chainStepsText.Height = 80;
+        _chainStepsText.Multiline = true;
+        _chainStepsText.ScrollBars = ScrollBars.Vertical;
+        groupChain.Controls.Add(_chainStepsText);
+
+        row += 196;
 
         var groupHunter = new GroupBox
         {
@@ -511,6 +560,10 @@ public sealed class MainForm : Form
         SelectComboValue(_refreshKey, _profile.TimedRefresh.Key.ToString(), VirtualKey.F5.ToString());
         _refreshIntervalSeconds.Value = Math.Clamp(_profile.TimedRefresh.IntervalSeconds, (int)_refreshIntervalSeconds.Minimum, (int)_refreshIntervalSeconds.Maximum);
 
+        _chainEnabled.Checked = _profile.MacroChain.Enabled;
+        _chainCycleDelay.Value = Math.Clamp(_profile.MacroChain.CycleDelayMs, (int)_chainCycleDelay.Minimum, (int)_chainCycleDelay.Maximum);
+        _chainStepsText.Text = FormatMacroSteps(_profile.MacroChain.Steps);
+
         _hunterEnabled.Checked = _profile.HunterTurret.Enabled;
         SelectComboValue(_hunterSkillKey, _profile.HunterTurret.AttackSkillKey.ToString(), VirtualKey.F1.ToString());
         SelectComboValue(_hunterTargetKey, _profile.HunterTurret.TargetCycleKey.ToString(), VirtualKey.Tab.ToString());
@@ -537,6 +590,10 @@ public sealed class MainForm : Form
         _profile.TimedRefresh.Key = ParseVirtualKey(_refreshKey.SelectedItem?.ToString(), VirtualKey.F5);
         _profile.TimedRefresh.IntervalSeconds = (int)_refreshIntervalSeconds.Value;
 
+        _profile.MacroChain.Enabled = _chainEnabled.Checked;
+        _profile.MacroChain.CycleDelayMs = (int)_chainCycleDelay.Value;
+        _profile.MacroChain.Steps = ParseMacroSteps(_chainStepsText.Text);
+
         _profile.HunterTurret.Enabled = _hunterEnabled.Checked;
         _profile.HunterTurret.AttackSkillKey = ParseVirtualKey(_hunterSkillKey.SelectedItem?.ToString(), VirtualKey.F1);
         _profile.HunterTurret.TargetCycleKey = ParseVirtualKey(_hunterTargetKey.SelectedItem?.ToString(), VirtualKey.Tab);
@@ -549,9 +606,14 @@ public sealed class MainForm : Form
 
     private void EnsureProfileDefaults()
     {
+        _profile.SkillSpam ??= new SkillSpamOptions();
+        _profile.TimedRefresh ??= new TimedRefreshOptions();
+        _profile.MacroChain ??= new MacroChainOptions();
+        _profile.MacroChain.Steps ??= new List<MacroStep>();
         _profile.HunterTurret ??= new HunterTurretOptions();
         _profile.HunterTurret.Identifier ??= new TargetIdentifierOptions();
         _profile.HunterTurret.Identifier.AllowedMonsterNames ??= new List<string>();
+        _profile.AllowedProcessRoot = string.IsNullOrWhiteSpace(_profile.AllowedProcessRoot) ? @"C:\PW" : _profile.AllowedProcessRoot;
     }
 
     private void SetEngineStatus(bool on)
@@ -636,6 +698,7 @@ public sealed class MainForm : Form
 
     private void ApplyHunterPreset()
     {
+        EnsureProfileDefaults();
         _profile.HunterTurret = HunterPresets.CreateGlPrisonTurret();
         _profile.SkillSpam.Enabled = false;
         _profile.TimedRefresh.Enabled = false;
@@ -660,6 +723,113 @@ public sealed class MainForm : Form
             .Where(static token => !string.IsNullOrWhiteSpace(token))
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
+    }
+
+    private List<MacroStep> ParseMacroSteps(string raw)
+    {
+        var steps = new List<MacroStep>();
+        if (string.IsNullOrWhiteSpace(raw))
+        {
+            return steps;
+        }
+
+        var lines = raw.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        foreach (var originalLine in lines)
+        {
+            var line = originalLine.Trim();
+            if (line.Length == 0 || line.StartsWith("#", StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var parts = line.Split(':', StringSplitOptions.RemoveEmptyEntries)
+                .Select(static part => part.Trim())
+                .ToArray();
+            if (parts.Length == 0)
+            {
+                continue;
+            }
+
+            var token = parts[0].ToUpperInvariant();
+            if (token is "KEY" or "KEYTAP")
+            {
+                var key = parts.Length > 1 ? ParseVirtualKey(parts[1], VirtualKey.None) : VirtualKey.None;
+                if (key == VirtualKey.None)
+                {
+                    Log($"MacroChain: skipped invalid key step '{line}'.");
+                    continue;
+                }
+
+                var delay = ParsePositiveIntOrDefault(parts.Length > 2 ? parts[2] : null, 80, 30);
+                steps.Add(new MacroStep
+                {
+                    Action = MacroStepAction.KeyTap,
+                    Key = key,
+                    DelayAfterMs = delay
+                });
+                continue;
+            }
+
+            if (token is "CLICK" or "LEFTCLICK")
+            {
+                var delay = ParsePositiveIntOrDefault(parts.Length > 1 ? parts[1] : null, 80, 30);
+                steps.Add(new MacroStep
+                {
+                    Action = MacroStepAction.LeftClick,
+                    Key = VirtualKey.None,
+                    DelayAfterMs = delay
+                });
+                continue;
+            }
+
+            if (token == "WAIT")
+            {
+                var delay = ParsePositiveIntOrDefault(parts.Length > 1 ? parts[1] : null, 80, 30);
+                steps.Add(new MacroStep
+                {
+                    Action = MacroStepAction.Wait,
+                    Key = VirtualKey.None,
+                    DelayAfterMs = delay
+                });
+                continue;
+            }
+
+            Log($"MacroChain: skipped unknown step '{line}'.");
+        }
+
+        return steps;
+    }
+
+    private static string FormatMacroSteps(IReadOnlyList<MacroStep> steps)
+    {
+        if (steps.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        var lines = new List<string>(steps.Count);
+        foreach (var step in steps)
+        {
+            lines.Add(step.Action switch
+            {
+                MacroStepAction.KeyTap when step.Key != VirtualKey.None => $"KEY:{step.Key}:{Math.Max(30, step.DelayAfterMs)}",
+                MacroStepAction.LeftClick => $"CLICK:{Math.Max(30, step.DelayAfterMs)}",
+                MacroStepAction.Wait => $"WAIT:{Math.Max(30, step.DelayAfterMs)}",
+                _ => $"WAIT:{Math.Max(30, step.DelayAfterMs)}"
+            });
+        }
+
+        return string.Join(Environment.NewLine, lines);
+    }
+
+    private static int ParsePositiveIntOrDefault(string? raw, int fallback, int minimum)
+    {
+        if (!int.TryParse(raw, out var value))
+        {
+            value = fallback;
+        }
+
+        return Math.Max(minimum, value);
     }
 
     private sealed class ProcessItem
