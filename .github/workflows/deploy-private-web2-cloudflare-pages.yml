@@ -1,0 +1,47 @@
+name: Deploy Private Web2 To Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - Web2
+    paths:
+      - "index.html"
+      - "gallery.html"
+      - "css/**"
+      - "js/**"
+      - "assets/**"
+      - ".github/workflows/deploy-private-web2-cloudflare-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Prepare static site bundle
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp gallery.html _site/
+          cp -R css _site/
+          cp -R js _site/
+          cp -R assets _site/
+
+      - name: Install Wrangler
+        run: npm install --global wrangler
+
+      - name: Deploy to Cloudflare Pages
+        run: wrangler pages deploy _site --project-name the-alley-studio-photobooth --branch web2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
