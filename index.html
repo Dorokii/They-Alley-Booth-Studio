@@ -21,7 +21,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn" href="#booking">Check Availability</a>
-            <a class="btn btn-ghost" href="#packages">View Packages</a>
+            <a class="btn btn-ghost" href="#packages" id="openPackages">Packages</a>
           </div>
         </div>
 
@@ -35,23 +35,62 @@
 
     <section id="packages" class="section">
       <div class="container">
-        <h2>Packages</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Mini</h3>
-            <p>2 hours, digital gallery, props</p>
-            <p class="price">$299</p>
-          </article>
-          <article class="card featured">
-            <h3>Classic</h3>
-            <p>3 hours, unlimited prints, attendant</p>
-            <p class="price">$399</p>
-          </article>
-          <article class="card">
-            <h3>Premium</h3>
-            <p>4 hours, guestbook, custom backdrop</p>
-            <p class="price">$549</p>
-          </article>
+        <div class="packages-head">
+          <h2>Packages</h2>
+          <button class="btn btn-ghost packages-toggle" type="button" id="packagesToggle" aria-expanded="false" aria-controls="packagesContent">Packages</button>
+        </div>
+
+        <div id="packagesContent" class="packages-content" hidden>
+          <img class="packages-image" src="assets/img/package.jfif" alt="Package options for The Alley Studio Photobooth" />
+
+          <div class="cards">
+            <article class="card">
+              <h3>Mini</h3>
+              <p>2 hours, digital gallery, props</p>
+              <p class="price">$299</p>
+            </article>
+            <article class="card featured">
+              <h3>Classic</h3>
+              <p>3 hours, unlimited prints, attendant</p>
+              <p class="price">$399</p>
+            </article>
+            <article class="card">
+              <h3>Premium</h3>
+              <p>4 hours, guestbook, custom backdrop</p>
+              <p class="price">$549</p>
+            </article>
+          </div>
+
+          <section class="addons-panel" id="addons">
+            <h3>Add-Ons</h3>
+            <p class="addons-copy">Choose upgrades to match your event style and guest flow.</p>
+            <div class="addons-grid">
+              <article class="addon-item">
+                <h4>Extra Hour</h4>
+                <p>+$90 per hour</p>
+              </article>
+              <article class="addon-item">
+                <h4>Guestbook Station</h4>
+                <p>+$75 with pens and glue setup</p>
+              </article>
+              <article class="addon-item">
+                <h4>Premium Backdrop</h4>
+                <p>+$60 curated texture or shimmer wall</p>
+              </article>
+              <article class="addon-item">
+                <h4>Custom Overlay</h4>
+                <p>+$45 event branded template</p>
+              </article>
+              <article class="addon-item">
+                <h4>Idle Animation Booth Screen</h4>
+                <p>+$50 custom intro loop</p>
+              </article>
+              <article class="addon-item">
+                <h4>Instant Cloud Album</h4>
+                <p>+$35 live guest gallery link</p>
+              </article>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -104,5 +143,6 @@
       <p>&copy; 2026 The Alley Studio Photobooth</p>
     </div>
   </footer>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

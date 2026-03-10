@@ -1,7 +1,7 @@
 :root {
   --bg: #fff8ef;
   --ink: #1f1f1f;
-  --muted: #5d5a57;
+  --muted: #2f2a25;
   --paper: #ffffff;
   --accent: #e4572e;
   --accent-2: #c7411b;
@@ -18,6 +18,7 @@ body {
   margin: 0;
   font-family: "Sora", sans-serif;
   color: var(--ink);
+  line-height: 1.55;
   background:
     radial-gradient(1000px 500px at 10% -5%, #ffe0bb 0%, transparent 55%),
     radial-gradient(900px 500px at 90% 0%, #ffd8a8 0%, transparent 50%),
@@ -79,7 +80,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "Fraunces", serif;
 }
 
@@ -87,12 +89,20 @@ h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.08;
   margin: 0 0 14px;
+  color: #121212;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.35);
 }
 
 .lead {
-  color: var(--muted);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.08rem;
   max-width: 56ch;
   margin-bottom: 22px;
+}
+
+p {
+  color: var(--muted);
 }
 
 .hero-actions {
@@ -118,9 +128,9 @@ h1 {
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.72);
   color: var(--ink);
-  border: 1px solid var(--line);
+  border: 1px solid #c9ad92;
 }
 
 .hero-card {
@@ -148,6 +158,31 @@ h1 {
   gap: 16px;
 }
 
+.packages-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.packages-toggle {
+  min-width: 160px;
+}
+
+.packages-content {
+  display: grid;
+  gap: 20px;
+}
+
+.packages-image {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
 .card {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -155,6 +190,10 @@ h1 {
   padding: 20px;
   box-shadow: var(--shadow);
   animation: rise 0.7s ease both;
+}
+
+.card p {
+  color: #2b2724;
 }
 
 .featured {
@@ -166,6 +205,48 @@ h1 {
   margin-top: 8px;
   font-weight: 700;
   color: var(--accent);
+}
+
+.addons-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: linear-gradient(180deg, #fffaf3 0%, #fff3e6 100%);
+  box-shadow: var(--shadow);
+}
+
+.addons-panel h3 {
+  margin: 0 0 8px;
+}
+
+.addons-copy {
+  margin: 0 0 14px;
+  color: #3b3530;
+  font-weight: 600;
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.addon-item {
+  border: 1px solid #e3ccb3;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.addon-item h4 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.addon-item p {
+  margin: 0;
+  color: #2c2723;
+  font-weight: 600;
 }
 
 .gallery {
@@ -227,6 +308,7 @@ textarea {
 @media (max-width: 900px) {
   .hero-grid,
   .cards,
+  .addons-grid,
   .gallery,
   .booking-form {
     grid-template-columns: 1fr;
