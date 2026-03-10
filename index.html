@@ -1,364 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Alley Studio Photobooth</title>
-  <meta name="description" content="Vintage photobooth moments—crafted for modern events and walk-ins." />
+  <meta name="description" content="Photo booth rentals for weddings, birthdays, and brand events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="topbar" id="top">
-    <div class="container topbar__inner">
-      <a class="brand" href="#top" aria-label="The Alley Studio Photobooth Home">
-        <span class="brand__mark">ABS</span>
-        <span class="brand__text">The Alley Studio Photobooth</span>
-      </a>
-
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#">The Alley Studio Photobooth</a>
       <nav class="nav" aria-label="Primary">
-        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
-          Menu
-        </button>
-        <div class="nav__menu" id="navMenu">
-          <a href="#booth">The Booth</a>
-          <a href="#packages">Packages</a>
-          <a href="#walkins">Walk-ins</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="#faq">FAQ</a>
-          <a class="btn btn--sm btn--primary" href="#book">Book</a>
-        </div>
+        <a href="#packages">Packages</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Book</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="section hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="kicker">Vintage • Minimal • Premium</p>
-          <h1>Vintage Photobooth Moments, Made Modern.</h1>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">PHOTO BOOTH RENTAL</p>
+          <h1>Turn your event into a memory machine.</h1>
           <p class="lead">
-            Enclosed kiosks, instant prints, and share-ready digital copies—crafted for events and walk-in experiences.
+            Weddings, birthdays, brand activations, and school events with instant prints, props, and custom overlays.
           </p>
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#book">Book the Booth</a>
-            <a class="btn btn--ghost" href="#packages">View Packages</a>
+          <div class="hero-actions">
+            <a class="btn" href="#booking">Check Availability</a>
+            <a class="btn btn-ghost" href="#packages">View Packages</a>
           </div>
-
-          <ul class="badges" aria-label="Highlights">
-            <li>Enclosed Kiosk</li>
-            <li>Premium Photo Quality</li>
-            <li>Instant Prints</li>
-            <li>Digital Sharing</li>
-          </ul>
         </div>
 
-        <div class="hero__media">
-          <div class="frame frame--tall">
-            <div class="frame__inner">
-              <!-- replace with your best photo later -->
-              <img src="assets/img/placeholder-1.jpg" alt="Photobooth setup preview" />
-            </div>
-            <div class="frame__label">THE ALLEY • PHOTO STRIP</div>
-          </div>
+        <div class="hero-card">
+          <h3>Most booked</h3>
+          <p><strong>Classic Booth</strong> - 3 hours, unlimited sessions, instant print strips, setup and attendant.</p>
+          <p class="price">From $399</p>
         </div>
       </div>
     </section>
 
-    <!-- THE BOOTH -->
-    <section class="section" id="booth">
-      <div class="container two-col">
-        <div>
-          <h2>The Booth</h2>
-          <p class="muted">
-            Multiple kiosk designs available—each a statement piece, always the same premium guest experience.
-          </p>
-
-          <ul class="bullets">
-            <li>Enclosed booth feel for timeless photobooth moments</li>
-            <li>Flattering lighting and crisp photo output</li>
-            <li>Instant prints plus digital copies guests can share</li>
-            <li>Designed for smooth flow at events and walk-ins</li>
-          </ul>
-
-          <div class="specs" role="list">
-            <div class="spec" role="listitem"><span>Footprint</span><strong>~ (editable)</strong></div>
-            <div class="spec" role="listitem"><span>Power</span><strong>~ (editable)</strong></div>
-            <div class="spec" role="listitem"><span>Setup Time</span><strong>~ (editable)</strong></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="frame">
-            <div class="frame__inner">
-              <img src="assets/img/placeholder-2.jpg" alt="Vintage-style enclosed kiosk booth" />
-            </div>
-            <div class="frame__label">VINTAGE KIOSK • ENTRANCE</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="section section--tint">
+    <section id="packages" class="section">
       <div class="container">
-        <h2>How It Works</h2>
-        <div class="cards cards--3">
+        <h2>Packages</h2>
+        <div class="cards">
           <article class="card">
-            <p class="stamp">Step 01</p>
-            <h3>Choose a Package</h3>
-            <p class="muted">Pick the coverage that fits your event or activation.</p>
+            <h3>Mini</h3>
+            <p>2 hours, digital gallery, props</p>
+            <p class="price">$299</p>
+          </article>
+          <article class="card featured">
+            <h3>Classic</h3>
+            <p>3 hours, unlimited prints, attendant</p>
+            <p class="price">$399</p>
           </article>
           <article class="card">
-            <p class="stamp">Step 02</p>
-            <h3>We Set Up & Run</h3>
-            <p class="muted">We handle setup and guest flow so you can enjoy.</p>
-          </article>
-          <article class="card">
-            <p class="stamp">Step 03</p>
-            <h3>Print & Share</h3>
-            <p class="muted">Guests take home prints and get digital copies.</p>
+            <h3>Premium</h3>
+            <p>4 hours, guestbook, custom backdrop</p>
+            <p class="price">$549</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- PACKAGES -->
-    <section class="section" id="packages">
+    <section id="gallery" class="section alt">
       <div class="container">
-        <div class="section__head">
-          <h2>Packages</h2>
-          <p class="muted">Pricing placeholders for now—edit anytime.</p>
-        </div>
-
-        <div class="cards cards--3">
-          <article class="card card--price">
-            <p class="stamp">The Classic</p>
-            <p class="price">₱—</p>
-            <ul class="check">
-              <li>Booth hours: —</li>
-              <li>Unlimited sessions</li>
-              <li>Prints included</li>
-              <li>Digital copies</li>
-              <li>Attendant</li>
-            </ul>
-            <a class="btn btn--ghost" href="#book">Book Classic</a>
-          </article>
-
-          <article class="card card--price card--featured">
-            <p class="stamp">The Deluxe</p>
-            <p class="price">₱—</p>
-            <ul class="check">
-              <li>Booth hours: —</li>
-              <li>Unlimited sessions</li>
-              <li>More prints / upgrades</li>
-              <li>Digital copies</li>
-              <li>Attendant</li>
-              <li>Template customization</li>
-            </ul>
-            <a class="btn btn--primary" href="#book">Book Deluxe</a>
-          </article>
-
-          <article class="card card--price">
-            <p class="stamp">The Premiere</p>
-            <p class="price">₱—</p>
-            <ul class="check">
-              <li>Booth hours: —</li>
-              <li>Unlimited sessions</li>
-              <li>Premium upgrades</li>
-              <li>Digital copies</li>
-              <li>Attendant</li>
-              <li>Enhanced customization</li>
-            </ul>
-            <a class="btn btn--ghost" href="#book">Book Premiere</a>
-          </article>
-        </div>
-
-        <div class="addons">
-          <h3>Add-ons</h3>
-          <p class="muted">Extra hours • Guestbook • Custom overlay • Premium backdrop</p>
+        <h2>Event Highlights</h2>
+        <div class="gallery">
+          <div class="tile">Wedding</div>
+          <div class="tile">Birthday</div>
+          <div class="tile">Corporate</div>
+          <div class="tile">School</div>
         </div>
       </div>
     </section>
 
-    <!-- WALK-INS -->
-    <section class="section section--tint" id="walkins">
-      <div class="container two-col">
-        <div>
-          <h2>Walk-ins</h2>
-          <p class="muted">
-            During lean season, you’ll find our booth in select partner venues—malls, cafés, and high-footfall spots.
-          </p>
-          <ul class="bullets">
-            <li>Pay and shoot on the spot</li>
-            <li>Fast sessions, great for groups</li>
-            <li>Perfect for venue activations and brand days</li>
-          </ul>
-          <a class="btn btn--ghost" href="#book">Partner with Us</a>
-        </div>
-        <div class="card">
-          <p class="stamp">Locations (placeholder)</p>
-          <ul class="list">
-            <li>— Mall / City</li>
-            <li>— Café / Area</li>
-            <li>— Partner Venue</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY PREVIEW -->
-    <section class="section">
+    <section id="booking" class="section">
       <div class="container">
-        <div class="section__head">
-          <h2>Gallery Preview</h2>
-          <a class="btn btn--sm btn--ghost" href="gallery.html">See Full Gallery</a>
-        </div>
-
-        <div class="grid" id="previewGrid">
-          <button class="thumb" data-full="assets/img/placeholder-1.jpg" aria-label="Open photo 1">
-            <img src="assets/img/placeholder-1.jpg" alt="" />
-          </button>
-          <button class="thumb" data-full="assets/img/placeholder-2.jpg" aria-label="Open photo 2">
-            <img src="assets/img/placeholder-2.jpg" alt="" />
-          </button>
-          <button class="thumb" data-full="assets/img/placeholder-3.jpg" aria-label="Open photo 3">
-            <img src="assets/img/placeholder-3.jpg" alt="" />
-          </button>
-          <button class="thumb" data-full="assets/img/placeholder-4.jpg" aria-label="Open photo 4">
-            <img src="assets/img/placeholder-4.jpg" alt="" />
-          </button>
-        </div>
+        <h2>Book Your Date</h2>
+        <form class="booking-form">
+          <input type="text" placeholder="Full name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone number" />
+          <input type="date" required />
+          <select required>
+            <option value="">Select package</option>
+            <option>Mini</option>
+            <option>Classic</option>
+            <option>Premium</option>
+          </select>
+          <input type="text" placeholder="Event location" />
+          <textarea rows="4" placeholder="Tell us about your event"></textarea>
+          <button type="submit" class="btn">Send Booking Request</button>
+        </form>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section section--tint" id="faq">
+    <section id="faq" class="section alt">
       <div class="container">
         <h2>FAQ</h2>
-        <div class="accordion" id="faqAccordion">
-          <details>
-            <summary>How much space do you need?</summary>
-            <p>We’ll provide footprint requirements once your venue is confirmed. (Editable)</p>
-          </details>
-          <details>
-            <summary>Do you need a power source?</summary>
-            <p>Yes—standard power is required. We’ll confirm requirements during booking. (Editable)</p>
-          </details>
-          <details>
-            <summary>Can we customize the photo layout?</summary>
-            <p>Yes—custom overlays and templates are available depending on package/add-ons.</p>
-          </details>
-          <details>
-            <summary>How do guests receive digital copies?</summary>
-            <p>We provide share-ready digital copies via common delivery methods. (Keep flexible)</p>
-          </details>
-          <details>
-            <summary>Do you do travel fees?</summary>
-            <p>Travel fees depend on location and time. We’ll quote it clearly.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- BOOKING -->
-    <section class="section" id="book">
-      <div class="container">
-        <div class="section__head">
-          <h2>Book the Booth</h2>
-          <p class="muted">Submit an inquiry—this prototype shows a success state (no backend yet).</p>
-        </div>
-
-        <div class="two-col">
-          <form class="form" id="bookingForm">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required />
-            </div>
-
-            <div class="field">
-              <label for="mobile">Mobile</label>
-              <input id="mobile" name="mobile" inputmode="tel" placeholder="09xx…" required />
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
-            </div>
-
-            <div class="field">
-              <label for="date">Event date</label>
-              <input id="date" name="date" type="date" required />
-            </div>
-
-            <div class="field">
-              <label for="time">Event time</label>
-              <input id="time" name="time" type="time" required />
-            </div>
-
-            <div class="field">
-              <label for="venue">Venue</label>
-              <input id="venue" name="venue" required />
-            </div>
-
-            <div class="field">
-              <label for="type">Event type</label>
-              <input id="type" name="type" placeholder="Wedding, birthday, corporate…" required />
-            </div>
-
-            <div class="field">
-              <label for="guests">Expected guests</label>
-              <input id="guests" name="guests" inputmode="numeric" placeholder="e.g., 100" />
-            </div>
-
-            <div class="field">
-              <label for="package">Package</label>
-              <select id="package" name="package">
-                <option>The Classic</option>
-                <option selected>The Deluxe</option>
-                <option>The Premiere</option>
-              </select>
-            </div>
-
-            <div class="field field--full">
-              <label for="notes">Notes</label>
-              <textarea id="notes" name="notes" rows="4" placeholder="Theme, schedule, venue notes…"></textarea>
-            </div>
-
-            <div class="field field--full">
-              <button class="btn btn--primary" type="submit">Send Inquiry</button>
-              <p class="form__success" id="formSuccess" hidden>
-                Thanks! We got your inquiry. (Prototype success message)
-              </p>
-            </div>
-          </form>
-
-          <aside class="card">
-            <p class="stamp">Contact</p>
-            <p class="muted">Replace these with your real details.</p>
-            <ul class="list">
-              <li><strong>Phone:</strong> —</li>
-              <li><strong>Email:</strong> —</li>
-              <li><strong>Instagram:</strong> —</li>
-              <li><strong>Facebook:</strong> —</li>
-            </ul>
-          </aside>
-        </div>
+        <p><strong>Setup time?</strong> We arrive 60-90 minutes early.</p>
+        <p><strong>Travel fee?</strong> Included within city limits.</p>
+        <p><strong>Deposit?</strong> 30% to lock your date.</p>
       </div>
     </section>
   </main>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
-    <img id="lightboxImg" alt="Expanded photo" />
-  </div>
-
-  <a class="floating-book" href="#book">Book</a>
-
-  <script src="js/main.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 The Alley Studio Photobooth</p>
+    </div>
+  </footer>
 </body>
 </html>
