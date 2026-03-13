@@ -60,11 +60,13 @@ body {
 }
 
 .hero {
-  padding: 72px 0 48px;
+  padding: 34px 0 48px;
 }
 
 .top-nav-wrap {
-  margin-bottom: 18px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 26px;
 }
 
 .top-nav {
@@ -82,8 +84,12 @@ body {
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: center;
+  gap: 16px;
+  align-items: start;
+}
+
+.hero-copy {
+  max-width: 860px;
 }
 
 .kicker {
@@ -105,7 +111,7 @@ h4 {
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.08;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: #1f1f1f;
   font-weight: 800;
 }
@@ -122,6 +128,8 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 24px;
 }
 
 p {
@@ -131,6 +139,8 @@ p {
 .hero-actions {
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -233,17 +243,49 @@ p {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 56px;
   gap: 14px;
+}
+
+.gallery-item {
+  margin: 0;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.collage-a {
+  grid-column: 1 / span 7;
+  grid-row: span 7;
+}
+
+.collage-b {
+  grid-column: 8 / span 5;
+  grid-row: span 9;
+}
+
+.collage-c {
+  grid-column: 1 / span 4;
+  grid-row: span 6;
+}
+
+.collage-d {
+  grid-column: 5 / span 4;
+  grid-row: span 6;
+}
+
+.collage-e {
+  grid-column: 9 / span 4;
+  grid-row: span 4;
 }
 
 .gallery-photo {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  display: block;
 }
 
 .booking-form {
@@ -304,6 +346,23 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .gallery {
+    grid-auto-rows: auto;
+  }
+
+  .gallery-item {
+    min-height: 280px;
+  }
+
+  .collage-a,
+  .collage-b,
+  .collage-c,
+  .collage-d,
+  .collage-e {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .nav {
     display: none;
   }
@@ -312,5 +371,9 @@ textarea {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  .hero {
+    padding-top: 24px;
   }
 }
