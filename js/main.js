@@ -68,10 +68,12 @@ const packagesSection = document.getElementById("packages");
 
 if (packagesTrigger && packagesSection) {
   packagesTrigger.addEventListener("click", (e) => {
+    e.preventDefault();
     if (packagesSection.hasAttribute("hidden")) {
-      e.preventDefault();
       packagesSection.removeAttribute("hidden");
       packagesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      packagesSection.setAttribute("hidden", "");
     }
   });
 }
