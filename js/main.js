@@ -61,27 +61,3 @@ if (lightbox) {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 }
-
-// Packages reveal interaction
-const packagesToggle = document.getElementById("packagesToggle");
-const packagesContent = document.getElementById("packagesContent");
-const openPackages = document.getElementById("openPackages");
-
-function setPackagesOpen(open) {
-  if (!packagesToggle || !packagesContent) return;
-  packagesContent.hidden = !open;
-  packagesToggle.setAttribute("aria-expanded", String(open));
-  packagesToggle.textContent = open ? "Hide Packages" : "Packages";
-}
-
-if (packagesToggle && packagesContent) {
-  packagesToggle.addEventListener("click", () => {
-    setPackagesOpen(packagesContent.hidden);
-  });
-}
-
-if (openPackages && packagesContent) {
-  openPackages.addEventListener("click", () => {
-    setPackagesOpen(true);
-  });
-}
