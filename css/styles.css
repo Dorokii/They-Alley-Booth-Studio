@@ -328,13 +328,26 @@ textarea {
   text-align: center;
 }
 
-.faq-image {
-  width: min(560px, 100%);
-  display: block;
+.faq-media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
   margin: 0 0 18px;
+  align-items: start;
+}
+
+.faq-image {
+  width: 100%;
+  display: block;
+  margin: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+}
+
+.faq-image-themed {
+  filter: saturate(0.32) hue-rotate(145deg) brightness(1.03) contrast(0.95);
+  background: #e5e8e6;
 }
 
 @keyframes rise {
@@ -354,6 +367,10 @@ textarea {
   .package-gallery,
   .cards,
   .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-media {
     grid-template-columns: 1fr;
   }
 
