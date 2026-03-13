@@ -125,9 +125,11 @@ h1 {
 }
 
 .hero-tagline {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
+  font-family: "Caveat", cursive;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.05rem);
   line-height: 1.3;
   margin-bottom: 24px;
 }
@@ -161,11 +163,11 @@ p {
 }
 
 .btn-book {
-  background: #7a1526;
+  background: #a62b3f;
 }
 
 .btn-book:hover {
-  background: #5e101d;
+  background: #8d2335;
 }
 
 .btn-ghost {
@@ -252,8 +254,8 @@ p {
 
 .collage-mosaic {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-auto-rows: 62px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 58px;
   gap: 10px;
 }
 
@@ -273,59 +275,29 @@ p {
   display: block;
 }
 
-.t1 {
-  grid-column: 1 / span 4;
-  grid-row: 1 / span 4;
-  transform: rotate(-2deg);
+.c1 {
+  grid-column: 1 / 7;
+  grid-row: 1 / 6;
 }
 
-.t2 {
-  grid-column: 5 / span 4;
-  grid-row: 1 / span 3;
-  transform: rotate(1deg);
+.c2 {
+  grid-column: 7 / 13;
+  grid-row: 1 / 5;
 }
 
-.t3 {
-  grid-column: 3 / span 3;
-  grid-row: 4 / span 4;
-  transform: rotate(-1deg);
+.c3 {
+  grid-column: 1 / 4;
+  grid-row: 6 / 12;
 }
 
-.t4 {
-  grid-column: 6 / span 3;
-  grid-row: 4 / span 5;
-  transform: rotate(2deg);
+.c4 {
+  grid-column: 4 / 8;
+  grid-row: 5 / 12;
 }
 
-.t5 {
-  grid-column: 1 / span 2;
-  grid-row: 5 / span 3;
-  transform: rotate(1deg);
-}
-
-.t6 {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
-}
-
-.t7 {
-  grid-column: 7 / span 2;
-  grid-row: 1 / span 2;
-}
-
-.t8 {
-  grid-column: 5 / span 2;
-  grid-row: 7 / span 2;
-}
-
-.t9 {
-  grid-column: 3 / span 2;
-  grid-row: 1 / span 2;
-}
-
-.t10 {
-  grid-column: 7 / span 2;
-  grid-row: 7 / span 2;
+.c5 {
+  grid-column: 8 / 13;
+  grid-row: 5 / 12;
 }
 
 .booking-form {
@@ -390,19 +362,13 @@ textarea {
     grid-auto-rows: 140px;
   }
 
-  .t1,
-  .t2,
-  .t3,
-  .t4,
-  .t5,
-  .t6,
-  .t7,
-  .t8,
-  .t9,
-  .t10 {
+  .c1,
+  .c2,
+  .c3,
+  .c4,
+  .c5 {
     grid-column: auto;
     grid-row: auto;
-    transform: none;
   }
 
   .nav {
