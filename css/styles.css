@@ -118,6 +118,12 @@ h1 {
   margin-bottom: 22px;
 }
 
+.hero-tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
 p {
   color: var(--muted);
 }
@@ -142,6 +148,14 @@ p {
 .btn:hover {
   transform: translateY(-2px);
   background: var(--accent-2);
+}
+
+.btn-book {
+  background: #7a1526;
+}
+
+.btn-book:hover {
+  background: #5e101d;
 }
 
 .btn-ghost {
@@ -219,17 +233,16 @@ p {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
-.tile {
-  min-height: 140px;
+.gallery-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   border-radius: 14px;
-  background: linear-gradient(135deg, #d7d3cb, #bfb39d);
-  display: grid;
-  place-items: center;
-  font-weight: 700;
+  border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
 

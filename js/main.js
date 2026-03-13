@@ -61,3 +61,17 @@ if (lightbox) {
     if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 }
+
+// Reveal packages section only when Packages button is clicked
+const packagesTrigger = document.getElementById("packagesTrigger");
+const packagesSection = document.getElementById("packages");
+
+if (packagesTrigger && packagesSection) {
+  packagesTrigger.addEventListener("click", (e) => {
+    if (packagesSection.hasAttribute("hidden")) {
+      e.preventDefault();
+      packagesSection.removeAttribute("hidden");
+      packagesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
