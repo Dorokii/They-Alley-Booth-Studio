@@ -63,9 +63,25 @@ body {
   padding: 72px 0 48px;
 }
 
+.top-nav-wrap {
+  margin-bottom: 18px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+}
+
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: 24px;
   align-items: center;
 }
@@ -133,15 +149,6 @@ p {
   border: 1px solid #c9ad92;
 }
 
-.hero-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 22px;
-  box-shadow: var(--shadow);
-  animation: rise 0.7s ease both;
-}
-
 .section {
   padding: 56px 0;
 }
@@ -156,12 +163,6 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-}
-
-.packages-head {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
 }
 
 .packages-content {
@@ -267,5 +268,11 @@ textarea {
 
   .nav {
     display: none;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 }
