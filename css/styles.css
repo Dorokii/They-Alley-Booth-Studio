@@ -166,17 +166,31 @@ p {
   gap: 16px;
 }
 
-.packages-content {
+.package-gallery {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.packages-image {
+.package-card {
+  margin: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.package-card img {
   width: 100%;
   display: block;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+}
+
+.package-card figcaption {
+  padding: 12px 14px;
+  color: #2f2e2c;
+  font-weight: 700;
+  text-align: center;
 }
 
 .card {
@@ -247,6 +261,15 @@ textarea {
   text-align: center;
 }
 
+.faq-image {
+  width: min(560px, 100%);
+  display: block;
+  margin: 0 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -261,6 +284,7 @@ textarea {
 
 @media (max-width: 900px) {
   .hero-grid,
+  .package-gallery,
   .cards,
   .gallery,
   .booking-form {
