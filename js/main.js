@@ -80,6 +80,8 @@ if (packagesTrigger && packagesSection) {
 
 // Background music: start after 2 seconds with a soft fade-in.
 const bgMusic = document.getElementById("bgMusic");
+const entryGate = document.getElementById("entryGate");
+const enterSiteBtn = document.getElementById("enterSiteBtn");
 
 function startMusicWithFade() {
   if (!bgMusic) return;
@@ -106,6 +108,18 @@ function startMusicWithFade() {
   });
 }
 
-if (bgMusic) {
+if (entryGate) {
+  document.body.style.overflow = "hidden";
+}
+
+if (enterSiteBtn) {
+  enterSiteBtn.addEventListener("click", () => {
+    if (entryGate) {
+      entryGate.hidden = true;
+      document.body.style.overflow = "";
+    }
+    setTimeout(startMusicWithFade, 200);
+  });
+} else if (bgMusic) {
   setTimeout(startMusicWithFade, 2000);
 }

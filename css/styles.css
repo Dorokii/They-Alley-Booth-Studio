@@ -176,6 +176,35 @@ p {
   border: 1px solid #b7b1a6;
 }
 
+.entry-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 20, 22, 0.72);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.entry-card {
+  width: min(520px, 94vw);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  text-align: center;
+}
+
+.entry-card h2 {
+  margin: 0 0 10px;
+}
+
+.entry-card p {
+  margin: 0 0 18px;
+}
+
 .section {
   padding: 56px 0;
 }
