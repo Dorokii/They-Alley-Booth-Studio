@@ -77,3 +77,35 @@ if (packagesTrigger && packagesSection) {
     }
   });
 }
+
+// Background music: start after 2 seconds with a soft fade-in.
+const bgMusic = document.getElementById("bgMusic");
+
+function startMusicWithFade() {
+  if (!bgMusic) return;
+  bgMusic.volume = 0;
+  bgMusic.play().then(() => {
+    const targetVolume = 0.4;
+    const step = 0.04;
+    const timer = setInterval(() => {
+      const nextVolume = Math.min(targetVolume, bgMusic.volume + step);
+      bgMusic.volume = nextVolume;
+      if (nextVolume >= targetVolume) clearInterval(timer);
+    }, 180);
+  }).catch(() => {
+    // Autoplay can be blocked; retry on first user interaction.
+    const unlock = () => {
+      startMusicWithFade();
+      window.removeEventListener("click", unlock);
+      window.removeEventListener("keydown", unlock);
+      window.removeEventListener("touchstart", unlock);
+    };
+    window.addEventListener("click", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+    window.addEventListener("touchstart", unlock, { once: true });
+  });
+}
+
+if (bgMusic) {
+  setTimeout(startMusicWithFade, 2000);
+}
