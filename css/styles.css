@@ -318,6 +318,10 @@ p {
   grid-row: 1 / 5;
 }
 
+.c2 img {
+  object-position: center 20%;
+}
+
 .c3 {
   grid-column: 1 / 4;
   grid-row: 6 / 12;
