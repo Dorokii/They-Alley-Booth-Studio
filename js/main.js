@@ -87,7 +87,7 @@ function startMusicWithFade() {
   if (!bgMusic) return;
   bgMusic.volume = 0;
   bgMusic.play().then(() => {
-    const targetVolume = 0.4;
+    const targetVolume = 0.2;
     const step = 0.04;
     const timer = setInterval(() => {
       const nextVolume = Math.min(targetVolume, bgMusic.volume + step);
@@ -116,6 +116,7 @@ if (enterSiteBtn) {
   enterSiteBtn.addEventListener("click", () => {
     if (entryGate) {
       entryGate.hidden = true;
+      entryGate.style.display = "none";
       document.body.style.overflow = "";
     }
     setTimeout(startMusicWithFade, 200);

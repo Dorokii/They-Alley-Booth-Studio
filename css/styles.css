@@ -187,6 +187,10 @@ p {
   backdrop-filter: blur(4px);
 }
 
+.entry-gate[hidden] {
+  display: none !important;
+}
+
 .entry-card {
   width: min(520px, 94vw);
   background: var(--paper);
